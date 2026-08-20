@@ -2,6 +2,8 @@
 
 一个嵌入微信读书阅读场景的本地 AI 阅读记忆工具，帮助用户标记关键情节、回顾阅读进度，并把划线和总结沉淀到 Obsidian。
 
+展示入口：[产品页面与 MVP Demo](https://58wpg9fr7d-code.github.io/weread-ai-reading-assistant/) · [GitHub 源码](https://github.com/58wpg9fr7d-code/weread-ai-reading-assistant)
+
 ## 项目定位
 
 这是一个个人 AI 工具型项目，重点解决长篇阅读中的进度断裂、重点难回顾和划线难沉淀问题。项目采用“浏览器扩展 + 本地 API + 本地知识库出口”的方式，保留用户对节点、阅读历史和导出路径的控制权。
