@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>WeRead AI · 微信读书智能阅读助手</title>
+  <style>
+    :root{--ink:#172033;--muted:#667085;--blue:#2563eb;--line:#e5e7eb;--bg:#f7f9fc}
+    *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.7 -apple-system,BlinkMacSystemFont,"PingFang SC","Helvetica Neue",Arial,sans-serif}
+    .wrap{max-width:980px;margin:0 auto;padding:72px 24px}.hero{background:#fff;border:1px solid var(--line);border-radius:24px;padding:48px;box-shadow:0 18px 55px #1f3b6812}h1{font-size:40px;line-height:1.2;margin:0 0 14px}h2{font-size:22px;margin:36px 0 12px}.lead{font-size:20px;color:#3b4659;max-width:760px}.tag{display:inline-block;color:var(--blue);background:#edf3ff;border-radius:999px;padding:5px 12px;font-size:13px;margin-bottom:18px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.card{border:1px solid var(--line);border-radius:14px;padding:18px;background:#fbfcff}.card h3{margin:0 0 6px;font-size:16px}.card p{margin:0;color:var(--muted);font-size:14px}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}a.button{display:inline-block;text-decoration:none;border-radius:9px;padding:11px 17px;background:var(--ink);color:white}a.button.alt{background:#edf3ff;color:var(--blue)}.note{color:var(--muted);font-size:13px;border-top:1px solid var(--line);margin-top:36px;padding-top:18px}@media(max-width:700px){.hero{padding:28px}.grid{grid-template-columns:1fr}h1{font-size:32px}.lead{font-size:17px}}
+  </style>
+</head>
+<body><main class="wrap"><section class="hero">
+  <span class="tag">AI 产品项目 · MVP 展示入口</span>
+  <h1>WeRead AI<br>微信读书智能阅读助手</h1>
+  <p class="lead">一个嵌入微信读书阅读场景的本地 AI 阅读记忆工具：用章节节点恢复上下文，用阅读回顾减少进度断裂，用 Obsidian 导出完成知识沉淀。</p>
+  <div class="actions"><a class="button" href="demo/">进入可操作 MVP Demo →</a><a class="button alt" href="PRD.md">查看完整产品 PRD</a><a class="button alt" href="https://github.com/58wpg9fr7d-code/weread-ai-reading-assistant">查看 GitHub 源码</a></div>
+  <h2>产品解决什么问题</h2><div class="grid"><div class="card"><h3>重新打开就能接上</h3><p>记录阅读进度，根据最近一次阅读范围生成回顾。</p></div><div class="card"><h3>快速定位关键情节</h3><p>根据章节目录提取关键转折点并映射到进度条。</p></div><div class="card"><h3>把划线变成自己的笔记</h3><p>将确认后的划线和总结整理为 Markdown，导出到本地 Obsidian。</p></div></div>
+  <h2>MVP 设计取舍</h2><p>先聚焦“进度、回顾、沉淀”三个高频任务，采用 Chrome Manifest V3 扩展 + FastAPI 本地服务；节点支持手动编辑，API Key 和 Obsidian 路径留在用户本机，不把个人阅读数据直接交给公共服务。</p>
+  <p class="note">说明：上方 MVP Demo 无需 API Key，可直接体验交互；真实项目代码和本地运行方式见 GitHub README。</p>
+</section></main></body></html>
