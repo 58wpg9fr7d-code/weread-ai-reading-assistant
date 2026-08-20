@@ -1,0 +1,12 @@
+.venv/
+__pycache__/
+*.py[cod]
+.DS_Store
+.env
+*.log
+
+# Local demo exports
+*.md
+!README.md
+!docs/**/*.md
+

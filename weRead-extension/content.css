@@ -1,0 +1,276 @@
+/* content.css —— 注入微信读书的 UI 样式 */
+
+/* ── 侧边栏 ── */
+#weread-ai-sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 380px;
+  height: 100vh;
+  background: #F8F8F6;
+  box-shadow: -2px 0 12px rgba(0, 0, 0, 0.08);
+  z-index: 99998;
+  font-family: 'PingFang SC', 'Noto Sans SC', system-ui, sans-serif;
+  font-size: 13px;
+  color: #1A1A1A;
+  overflow-y: auto;
+  transition: transform 0.25s ease;
+  transform: translateX(100%);  /* 默认隐藏 */
+}
+#weread-ai-sidebar:not(.wai-hidden) {
+  transform: translateX(0);
+}
+.wai-sidebar-inner {
+  padding: 0;
+}
+.wai-sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  border-bottom: 1px solid #E8E4DD;
+  background: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+.wai-logo {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1A1A1A;
+}
+.wai-close-btn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #9B9A94;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+.wai-close-btn:hover {
+  background: #F0F0EC;
+  color: #1A1A1A;
+}
+
+/* ── 区块 ── */
+.wai-section {
+  padding: 16px 20px;
+  border-bottom: 1px solid #EBE9E2;
+}
+.wai-section-title {
+  font-size: 11px;
+  font-weight: 600;
+  color: #8B8A84;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 10px;
+}
+
+/* ── 按钮 ── */
+.wai-btn-group {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+.wai-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 14px;
+  font-family: inherit;
+  font-size: 12.5px;
+  font-weight: 500;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.15s, opacity 0.15s;
+}
+.wai-btn-primary {
+  background: #1A1A1A;
+  color: #FAFAF8;
+}
+.wai-btn-primary:hover { opacity: 0.85; }
+.wai-btn-outline {
+  background: transparent;
+  color: #505050;
+  border: 1px solid #D5D3CC;
+}
+.wai-btn-outline:hover { background: #EEECE6; }
+.wai-btn-sm {
+  font-size: 11px;
+  padding: 5px 10px;
+}
+
+/* ── 加载和结果 ── */
+.wai-loading {
+  font-size: 12px;
+  color: #8B8A84;
+  padding: 10px 0;
+}
+.wai-result-text {
+  background: #fff;
+  border-left: 3px solid #2563EB;
+  padding: 12px 14px;
+  border-radius: 0 6px 6px 0;
+  font-size: 13px;
+  line-height: 1.75;
+  margin-top: 8px;
+}
+.wai-result-text p {
+  margin: 0 0 6px 0;
+}
+.wai-result-text h3,
+.wai-result-text h4 {
+  margin: 10px 0 4px;
+  font-size: 14px;
+}
+.wai-result-text li {
+  margin-left: 16px;
+}
+.wai-hint {
+  font-size: 12px;
+  color: #8B8A84;
+  font-style: italic;
+}
+.wai-error {
+  color: #DC2626;
+  font-size: 12px;
+}
+
+/* ── 状态提示 ── */
+.wai-status {
+  font-size: 12px;
+  color: #505050;
+  margin-top: 6px;
+  min-height: 18px;
+}
+
+/* ── 节点列表 ── */
+.wai-node-list {
+  margin-bottom: 8px;
+}
+.wai-node-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  cursor: default;
+}
+.wai-node-item:hover {
+  background: #EEECE6;
+}
+.wai-node-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.wai-node-title {
+  flex: 1;
+  color: #1A1A1A;
+}
+.wai-node-pct {
+  font-size: 11px;
+  color: #8B8A84;
+  font-variant-numeric: tabular-nums;
+}
+.wai-empty {
+  font-size: 12px;
+  color: #B8B5AD;
+  padding: 10px 0;
+}
+
+/* ── 输入框 ── */
+.wai-label {
+  display: block;
+  font-size: 11px;
+  color: #8B8A84;
+  margin-bottom: 4px;
+}
+.wai-input {
+  width: 100%;
+  padding: 6px 10px;
+  font-size: 12px;
+  border: 1px solid #D5D3CC;
+  border-radius: 4px;
+  background: #fff;
+  color: #1A1A1A;
+  font-family: inherit;
+  margin-bottom: 8px;
+}
+.wai-input:focus {
+  outline: none;
+  border-color: #2563EB;
+}
+
+/* ── 进度条节点 ── */
+.wai-progress-node {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 6px;
+  height: 6px;
+  background: #2563EB;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.wai-progress-node:hover {
+  transform: translate(-50%, -50%) scale(1.8);
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.3);
+}
+.wai-progress-node.wai-active {
+  transform: translate(-50%, -50%) scale(2);
+  box-shadow: 0 0 0 6px rgba(37, 99, 235, 0.4);
+  background: #1D4ED8;
+}
+
+/* ── 触发按钮 ── */
+#wai-trigger {
+  position: fixed;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 32px;
+  height: 64px;
+  background: #1A1A1A;
+  color: #FAFAF8;
+  border-radius: 8px 0 0 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 99997;
+  font-size: 14px;
+  opacity: 0.6;
+  transition: opacity 0.2s, width 0.2s;
+}
+#wai-trigger:hover {
+  opacity: 1;
+  width: 36px;
+}
+
+/* ── Toast ── */
+.wai-toast {
+  position: fixed;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1A1A1A;
+  color: #FAFAF8;
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-size: 13px;
+  z-index: 99999;
+  opacity: 0;
+  transition: opacity 0.25s;
+  pointer-events: none;
+}
+.wai-toast-show {
+  opacity: 1;
+}

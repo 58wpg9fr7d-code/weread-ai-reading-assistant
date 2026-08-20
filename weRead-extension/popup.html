@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WeRead AI</title>
+  <style>
+    :root {
+      --bg: #F8F8F6;
+      --text: #1A1A1A;
+      --muted: #8B8A84;
+      --border: #E8E4DD;
+      --accent: #2563EB;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      font-family: 'PingFang SC', system-ui, sans-serif;
+      font-size: 13px;
+      color: var(--text);
+      background: var(--bg);
+      width: 320px;
+      min-height: 200px;
+    }
+    .container { padding: 16px 20px; }
+    .title {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .subtitle {
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+    .field {
+      margin-bottom: 12px;
+    }
+    .field label {
+      display: block;
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+    .field input {
+      width: 100%;
+      padding: 6px 10px;
+      font-size: 12px;
+      border: 1px solid #D5D3CC;
+      border-radius: 4px;
+      background: #fff;
+      font-family: inherit;
+    }
+    .field input:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+    .btn {
+      width: 100%;
+      padding: 8px 0;
+      background: var(--text);
+      color: var(--bg);
+      border: none;
+      border-radius: 6px;
+      font-size: 12.5px;
+      font-weight: 500;
+      font-family: inherit;
+      cursor: pointer;
+    }
+    .btn:hover { opacity: 0.85; }
+    .status {
+      font-size: 11px;
+      color: #059669;
+      margin-top: 8px;
+      text-align: center;
+      min-height: 16px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="title">📖 WeRead AI</div>
+    <div class="subtitle">配置 API 地址和 Obsidian 路径</div>
+
+    <div class="field">
+      <label>API 地址</label>
+      <input id="api-url" type="text" placeholder="http://localhost:8001" />
+    </div>
+    <div class="field">
+      <label>Obsidian Vault 路径</label>
+      <input id="vault-path" type="text" placeholder="/Users/xxx/Obsidian/我的笔记" />
+    </div>
+
+    <button class="btn" id="save-btn">保存设置</button>
+    <div class="status" id="status"></div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

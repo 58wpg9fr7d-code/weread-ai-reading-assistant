@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "WeRead AI · 微信读书助手",
+  "version": "1.0.0",
+  "description": "进度条情节节点、阅读回顾、一键导出 Obsidian 笔记",
+  "permissions": ["storage", "scripting", "activeTab"],
+  "host_permissions": [
+    "http://localhost:8001/*",
+    "https://weread.qq.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["https://weread.qq.com/web/reader/*"],
+      "js": ["content.js"],
+      "css": ["content.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "WeRead AI",
+    "default_popup": "popup.html"
+  }
+}
