@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>WeRead AI · 产品体验 Demo</title>
+  <style>
+    :root { --ink:#1d2433; --muted:#6e7787; --line:#e6e9ef; --blue:#2563eb; --soft:#f5f7fb; --green:#0f9f6e; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:#eef1f6; color:var(--ink); font:14px/1.6 -apple-system,BlinkMacSystemFont,"PingFang SC","Helvetica Neue",Arial,sans-serif; }
+    .shell { max-width:1120px; margin:32px auto; background:#fff; border:1px solid var(--line); border-radius:18px; overflow:hidden; box-shadow:0 18px 50px #27324b18; }
+    header { padding:24px 30px; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--line); }
+    h1,h2,h3,p { margin:0; } h1 { font-size:22px; } h2 { font-size:18px; margin-bottom:14px; } h3 { font-size:15px; }
+    .tag { color:var(--blue); background:#edf3ff; border-radius:999px; padding:5px 11px; font-size:12px; }
+    .layout { display:grid; grid-template-columns:1fr 330px; min-height:650px; }
+    .reader { padding:32px 42px; background:#fffdf9; }
+    .eyebrow { color:var(--muted); font-size:12px; margin-bottom:6px; } .book { font-size:28px; margin-bottom:24px; }
+    .chapter { max-width:650px; color:#404858; font-size:16px; } .chapter p { margin:0 0 18px; }
+    .progress { position:relative; height:9px; background:#e5e7eb; border-radius:9px; margin:28px 0 8px; }
+    .progress-fill { width:42%; height:100%; background:var(--blue); border-radius:9px; }
+    .node { position:absolute; top:-5px; width:19px; height:19px; border:3px solid #fff; border-radius:50%; background:#7c3aed; box-shadow:0 0 0 1px #c4b5fd; cursor:pointer; }
+    .node:hover { transform:scale(1.2); } .legend { display:flex; justify-content:space-between; color:var(--muted); font-size:12px; }
+    aside { padding:24px; background:var(--soft); border-left:1px solid var(--line); }
+    .card { background:#fff; border:1px solid var(--line); border-radius:12px; padding:16px; margin-bottom:14px; }
+    .node-list { display:grid; gap:9px; margin-top:10px; } .node-row { display:flex; gap:9px; align-items:center; font-size:13px; }
+    .dot { width:9px; height:9px; border-radius:50%; background:#7c3aed; } .pct { margin-left:auto; color:var(--muted); }
+    button { width:100%; padding:10px 12px; border:0; border-radius:8px; background:var(--ink); color:white; cursor:pointer; font:inherit; margin-top:8px; }
+    button.secondary { background:#edf3ff; color:var(--blue); } button:hover { opacity:.86; }
+    .result { margin-top:12px; padding:11px; background:#f8fafc; border-radius:8px; color:#4b5563; font-size:13px; display:none; }
+    .footer { padding:18px 30px; border-top:1px solid var(--line); color:var(--muted); font-size:12px; display:flex; justify-content:space-between; }
+    @media (max-width:800px) { .layout { grid-template-columns:1fr; } aside { border-left:0; border-top:1px solid var(--line); } .reader { padding:24px; } }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header><div><h1>📖 WeRead AI</h1><p class="eyebrow">微信读书智能阅读助手 · 产品体验 Demo</p></div><span class="tag">MVP 交互原型</span></header>
+    <section class="layout">
+      <article class="reader">
+        <p class="eyebrow">正在阅读 · 示例书籍</p><h2 class="book">人类简史</h2>
+        <div class="chapter"><p>这是一个用于面试展示的静态体验 Demo。左侧模拟微信读书阅读页，底部进度条上的彩色节点代表 AI 根据章节目录提取的关键转折点。</p><p>产品的核心不是替用户读完整本书，而是在重新打开阅读现场时，帮助用户快速恢复上下文，并把确认后的内容沉淀为自己的笔记。</p><p>点击右侧“回顾上次内容”，可以看到阅读记忆功能的示例反馈；点击节点可以观察产品如何把关键情节映射到阅读进度。</p></div>
+        <div class="progress"><div class="progress-fill"></div><span class="node" style="left:18%" title="问题出现"></span><span class="node" style="left:42%" title="关键转折"></span><span class="node" style="left:68%" title="冲突升级"></span><span class="node" style="left:88%" title="结局回收"></span></div>
+        <div class="legend"><span>0%</span><span id="position">当前阅读进度 42%</span><span>100%</span></div>
+      </article>
+      <aside>
+        <div class="card"><h3>章节节点</h3><div class="node-list"><div class="node-row"><i class="dot"></i>问题出现<span class="pct">18%</span></div><div class="node-row"><i class="dot"></i>关键转折<span class="pct">42%</span></div><div class="node-row"><i class="dot"></i>冲突升级<span class="pct">68%</span></div><div class="node-row"><i class="dot"></i>结局回收<span class="pct">88%</span></div></div><button class="secondary" id="edit">✏️ 编辑节点（示例）</button></div>
+        <div class="card"><h3>阅读回顾</h3><button id="review">📌 回顾上次内容</button><button class="secondary" id="all">📚 总结全部已读</button><div class="result" id="result"></div></div>
+        <div class="card"><h3>知识沉淀</h3><p class="eyebrow">确认后可导出为 Markdown，写入本地 Obsidian Vault。</p><button class="secondary" id="export">📝 查看导出预览</button><div class="result" id="exportResult"></div></div>
+      </aside>
+    </section>
+    <footer><span>真实项目：Chrome Manifest V3 + FastAPI + Gemini API</span><span>本 Demo 不需要 API Key</span></footer>
+  </main>
+  <script>
+    const result=document.querySelector('#result'), exportResult=document.querySelector('#exportResult');
+    document.querySelector('#review').onclick=()=>{result.style.display='block';result.textContent='上次阅读：第 3 章 → 第 5 章。核心线索已进入冲突阶段，下一次可从“关键转折”节点继续。';};
+    document.querySelector('#all').onclick=()=>{result.style.display='block';result.textContent='已读内容总结：故事完成了从问题出现到冲突升级的推进，当前建议关注结局如何回收前文线索。';};
+    document.querySelector('#export').onclick=()=>{exportResult.style.display='block';exportResult.innerHTML='<strong>人类简史.md</strong><br>## 关键观点<br>已确认的划线内容将按主题整理，并保留在本地 Obsidian Vault。';};
+    document.querySelector('#edit').onclick=()=>{document.querySelector('#edit').textContent='✅ 已进入编辑模式';};
+    document.querySelectorAll('.node').forEach(n=>n.onclick=()=>{document.querySelector('#position').textContent='已定位到关键节点：'+n.title;});
+  </script>
+</body>
+</html>

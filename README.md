@@ -27,6 +27,7 @@ weRead-extension/
 └── popup.js            # API 地址和 Vault 路径配置
 weread_api.py           # FastAPI 本地服务
 docs/                   # 项目案例、架构和验证记录
+demo/                   # 无需 API Key 的静态产品体验 Demo
 ```
 
 ## 本地运行
@@ -84,7 +85,8 @@ curl --noproxy '*' http://localhost:8001/api/health
 
 更多材料见：
 
+- [产品 PRD](PRD.md)
+- [静态 MVP 体验 Demo](demo/index.html)
 - [项目案例说明](docs/PROJECT_CASE.md)
 - [架构说明](docs/architecture.md)
 - [验证记录](docs/verification.md)
-
