@@ -8,5 +8,5 @@ __pycache__/
 # Local demo exports
 *.md
 !README.md
+!PRD.md
 !docs/**/*.md
-
